@@ -1,0 +1,113 @@
+S.Z, [09/07/1405 10:56 ق.ظ]
+<div class="pricing-grid">
+<div class="price-card reveal"><h3>پایه</h3><div class="price">رایگان</div><small>برای همیشه</small><ul><li>۱ پروژه</li><li>۵ گیگابایت پهنای باند</li><li>پشتیبانی انجمن</li></ul><a href="#" class="btn btn-ghost">شروع کنید</a></div>
+<div class="price-card featured reveal"><h3>حرفه‌ای</h3><div class="price">۲۹۰,۰۰۰</div><small>تومان / ماهانه</small><ul><li>۱۰ پروژه</li><li>۱۰۰ گیگابایت پهنای باند</li><li>دامنه اختصاصی</li><li>پشتیبانی ۲۴/۷</li></ul><a href="#" class="btn btn-primary">شروع کنید</a></div>
+<div class="price-card reveal"><h3>سازمانی</h3><div class="price">۸۹۰,۰۰۰</div><small>تومان / ماهانه</small><ul><li>پروژه نامحدود</li><li>پهنای باند نامحدود</li><li>مدیر اختصاصی</li><li>SLA تضمین‌شده</li></ul><a href="#" class="btn btn-ghost">تماس بگیرید</a></div>
+</div>
+</section>
+<section id="testimonials">
+<h2 class="section-title reveal">کاربران ما چه می‌گویند</h2>
+<p class="section-subtitle reveal">بیش از ۱۰,۰۰۰ تیم از Cloudify استفاده می‌کنند.</p>
+<div class="testimonial-slider reveal">
+<div class="testimonial-text" id="testimonialText"></div>
+<div class="testimonial-author" id="testimonialAuthor"></div>
+<div class="testimonial-role" id="testimonialRole"></div>
+<div class="slider-dots" id="sliderDots"></div>
+</div>
+</section>
+<footer>
+<div class="footer-links"><a href="#">درباره ما</a><a href="#">مستندات</a><a href="#">وبلاگ</a><a href="#">تماس</a></div>
+<p class="footer-copy">© 2025 Cloudify. ساخته شده با ❤️</p>
+</footer>
+<script>
+var themeBtn=document.getElementById('themeBtn');
+var html=document.documentElement;
+themeBtn.addEventListener('click',function(){
+if(html.getAttribute('data-theme')==='light'){html.removeAttribute('data-theme');themeBtn.textContent='🌙'}
+else{html.setAttribute('data-theme','light');themeBtn.textContent='☀️'}
+});
+var testimonials=[
+{text:'Cloudify واقعاً سرعت استقرار ما را چند برابر کرد.',author:'علی محمدی',role:'مدیر فنی، دیجی‌کالا'},
+{text:'بهترین تصمیمی که گرفتیم انتقال به Cloudify بود.',author:'سارا احمدی',role:'بنیان‌گذار، اسنپ‌فود'},
+{text:'پشتیبانی ۲۴/۷ و مستندات عالی، تجربه بی‌نظیری ساخته.',author:'رضا کریمی',role:'توسعه‌دهنده ارشد، آپارات'}
+];
+var currentIndex=0;
+var textEl=document.getElementById('testimonialText');
+var authorEl=document.getElementById('testimonialAuthor');
+var roleEl=document.getElementById('testimonialRole');
+var dotsContainer=document.getElementById('sliderDots');
+function showTestimonial(index){
+currentIndex=index;
+var t=testimonials[index];
+textEl.style.opacity=0;
+setTimeout(function(){
+textEl.textContent='"'+t.text+'"';
+authorEl.textContent=t.author;
+roleEl.textContent=t.role;
+textEl.style.opacity=1;
+},200);
+var dots=document.querySelectorAll('.dot');
+for(var i=0;i<dots.length;i++){dots[i].classList.toggle('active',i===index)}
+}
+for(var i=0;i<testimonials.length;i++){
+(function(idx){
+var dot=document.createElement('button');
+dot.className='dot'+(idx===0?' active':'');
+dot.addEventListener('click',function(){showTestimonial(idx)});
+dotsContainer.appendChild(dot);
+})(i);
+}
+showTestimonial(0);
+setInterval(function(){showTestimonial((currentIndex+1)%testimonials.length)},5000);
+var revealElements=document.querySelectorAll('.reveal');
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible')}});
+},{threshold:0.1});
+revealElements.forEach(function(el){observer.observe(el)});
+</script>
+</body>
+</html>
+
+S.Z, [09/07/1405 11:06 ق.ظ]
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloudify | پلتفرم ابری</title>
+<style>
+:root{--primary:#6C63FF;--accent:#FF6584;--bg:#0a0a14;--bg-card:#13131f;--text:#e0e0e0;--text-muted:#8888a0;--border:rgba(255,255,255,0.08)}
+[data-theme="light"]{--bg:#fff;--bg-card:#f7f7fb;--text:#1a1a2e;--text-muted:#6b6b80;--border:rgba(0,0,0,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;transition:background .4s,color .4s}
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgba(10,10,20,.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+[data-theme="light"] header{background:rgba(255,255,255,.8)}
+.logo{font-size:24px;font-weight:800;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav{display:flex;align-items:center;gap:30px}
+nav a{color:var(--text);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--primary)}
+.theme-toggle{background:transparent;border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;background:radial-gradient(circle at 50% 0%,rgba(108,99,255,0.2),transparent 60%)}
+.badge{display:inline-block;padding:8px 18px;background:rgba(108,99,255,0.15);color:var(--primary);border-radius:50px;font-size:14px;margin-bottom:25px;border:1px solid rgba(108,99,255,0.3)}
+#hero h1{font-size:60px;font-weight:800;line-height:1.3;margin-bottom:25px}
+#hero h1 .gradient{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#hero p{font-size:18px;color:var(--text-muted);max-width:600px;margin-bottom:40px}
+.cta-group{display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
+.btn{padding:15px 32px;border-radius:12px;text-decoration:none;font-weight:600;font-size:16px;display:inline-block;border:none;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--primary),#5a52d5);color:#fff;box-shadow:0 8px 25px rgba(108,99,255,.4)}
+.btn-primary:hover{transform:translateY(-3px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+section{padding:100px 60px;max-width:1200px;margin:0 auto}
+.section-title{text-align:center;font-size:40px;font-weight:800;margin-bottom:20px}
+.section-subtitle{text-align:center;color:var(--text-muted);margin-bottom:60px}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:35px 30px;transition:all .4s}
+.feature-card:hover{transform:translateY(-8px);border-color:var(--primary)}
+.feature-icon{width:55px;height:55px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px}
+.feature-card h3{font-size:20px;margin-bottom:12px}
+.feature-card p{color:var(--text-muted);font-size:15px}
+#pricing{background:var(--bg-card);border-radius:30px;border:1px solid var(--border)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+.price-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:35px 30px;text-align:center;position:relative}
+.price-card.featured{border:2px solid var(--primary);transform:scale(1.05)}
